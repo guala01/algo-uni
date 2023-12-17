@@ -10,10 +10,7 @@ def convert_str_matrix_to_int(matrix):
 
 # converto la matrice in numpy e la comparo con la sua trasposta se sono uguali il grafo sarà non orientato
 def is_directed(matrix):
-    
     matrix = np.array(matrix)
-    #print(matrix)
-    #print(matrix.T)
     if np.array_equal(matrix, matrix.T):
         return False
     else:
