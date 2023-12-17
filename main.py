@@ -2,13 +2,13 @@ import csv
 from collections import deque
 import numpy as np
 
-#csv importa come stringa devo convertire la matrice in int
+# csv importa come matrice di stringhe
 def convert_str_matrix_to_int(matrix):
     for i in range(len(matrix)):
         for j in range(len(matrix[i])):
             matrix[i][j] = int(matrix[i][j])
 
-#converto la matrice in numpy e la comparo con la sua trasposta se sono uguali il grafo sarà non orientato
+# converto la matrice in numpy e la comparo con la sua trasposta se sono uguali il grafo sarà non orientato
 def is_directed(matrix):
     
     matrix = np.array(matrix)
@@ -22,7 +22,7 @@ def is_directed(matrix):
 
 # implemento bfs usando deque come coda e la lista dei nodi visitati
 # faccio un loop per ogni elemento della matrice
-#controllo se c'e' un edge tra il nodo e nodo[i] e se e' stato visitato
+# controllo se c'e' un edge tra il nodo e nodo[i] e se e' stato visitato
 def bfs(matrix, start):
     visited = [False]*len(matrix)
     queue = deque([start])
@@ -36,7 +36,7 @@ def bfs(matrix, start):
                 if is_edge and not visited[i]:
                     queue.append(i)
                   
-#test
+# test
 test_directed_matrix = [
     [0, 1, 0, 0],
     [0, 0, 1, 0],
@@ -52,7 +52,7 @@ test_undirected_matrix = [
     [1, 0, 1, 0]
 ]
 
-filename = 'directed_graph.csv'
+filename = 'graph.csv'
 
 with open(filename, 'r') as file:
     reader = csv.reader(file)
@@ -65,5 +65,5 @@ if is_directed(matrix):
 else:
     print("Grafo non orientato")
 
-#chiamo bfs con il nodo di partenza desiderato
+# chiamo bfs con il nodo di partenza desiderato
 bfs(matrix, 0)
